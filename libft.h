@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/08 14:23:41 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/10 14:12:22 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+typedef struct 	s_list
+{
+	void 		*content;
+	size_t 		content_size;
+	struct 		s_list *next;
+} 				t_list;
 
 void	ft_bzero(void *s, size_t n);
 void	ft_error(const char *msg);
