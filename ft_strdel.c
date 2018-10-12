@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 /*
 ** NAME:
@@ -33,8 +32,7 @@
 
 void	ft_strdel(char **as)
 {
-	if (as != NULL)
-		ft_memdel((void**)as);
-	else
+	if (as == NULL)
 		return ;
+	ft_memdel((void**)as);
 }

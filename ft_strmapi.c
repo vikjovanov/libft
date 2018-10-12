@@ -39,7 +39,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*str;
 
 	i = 0;
-	if (s == NULL)
+	if (s == NULL || f == NULL)
 		return (NULL);
 	str = ft_strnew(ft_strlen(s));
 	if (str == NULL)

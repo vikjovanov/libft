@@ -18,11 +18,10 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 
 	if (lst == NULL || f == NULL)
 		return (NULL);
-	new = NULL;
 	new = ft_lstnew(lst->content, lst->content_size);
-	new = f(new);
 	if (new == NULL)
 		return (NULL);
+	new = f(new);
 	if (lst->next)
 		new->next = ft_lstmap(lst->next, f);
 	return (new);
