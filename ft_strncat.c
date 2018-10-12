@@ -53,10 +53,3 @@ char	*ft_strncat(char *dest, const char *src, size_t n)
 	dest[j] = '\0';
 	return (dest);
 }
-
-int main()
-{
-	char *a = NULL;
-	char b[50] = " Viktor";
-	printf("%s\n", strncat(a, b, 5));
-}
