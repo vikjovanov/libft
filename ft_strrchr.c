@@ -40,6 +40,8 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = 0;
 	is_occ = 0;
+	if (*s == '\0' && c == '\0')
+		return ((char*)s);
 	while (s[i])
 	{
 		if (s[i] == c)
