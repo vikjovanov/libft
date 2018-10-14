@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:13:45 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/12 22:22:18 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/14 09:40:22 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ static int		check_malloc(char **str, size_t words)
 			i++;
 		}
 		free(str[i]);
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }
 
 /*
@@ -152,10 +152,9 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	str[words] = 0;
 	create_memwords(s, c, str);
-	if(check_malloc(str, words))
+	if(!(check_malloc(str, words)))
 	{
 		free(str);
-		ft_error("TROP DE MEMOIRE ALLOUE");
 		return (NULL);
 	}
 	spliter(s, c, str);

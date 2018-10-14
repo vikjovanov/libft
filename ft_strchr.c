@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 09:50:33 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/08 19:04:03 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/14 10:04:28 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ char	*ft_strchr(const char *s, int c)
 	{
 		if (s[i] == c)
 			return ((char*)&s[i]);
-		else if (s[i + 1] == c)
-			return ((char*)&s[i + 1]);
 		i++;
 	}
+	if (s[i] == c)
+		return ((char*)&s[i]);
 	return (NULL);
 }
