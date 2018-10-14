@@ -152,7 +152,7 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	str[words] = 0;
 	create_memwords(s, c, str);
-	if(!(check_malloc(str, words)))
+	if (!(check_malloc(str, words)))
 	{
 		free(str);
 		return (NULL);
