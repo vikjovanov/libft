@@ -41,11 +41,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	d = (char*)dest;
 	s = (const char*)src;
+	if (n == 0)
+		return (dest);
 	i = 0;
 	while (i < n)
 	{
 		d[i] = s[i];
 		i++;
 	}
-	return (dest);
+	return (d);
 }
