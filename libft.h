@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/11 14:55:44 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/20 13:38:38 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 size_t				ft_strlen(const char *str);
+size_t				ft_strclen(const char *str, int c);
 char				*ft_strdup(const char *src);
 char				*ft_strndup(const char *s, size_t n);
 char				*ft_strcat(char *dest, const char *src);
