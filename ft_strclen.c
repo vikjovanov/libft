@@ -36,7 +36,8 @@ size_t		ft_strclen(const char *str, int c)
 {
 	size_t	size;
 
-	while (*str && *str != c)
+	size = 0;
+	while (str[size] && str[size] != c)
 		size++;
 	return (size);
 }
