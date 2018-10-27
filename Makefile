@@ -6,7 +6,7 @@
 #    By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/03 17:47:59 by vjovanov          #+#    #+#              #
-#    Updated: 2018/10/24 23:20:23 by vjovanov         ###   ########.fr        #
+#    Updated: 2018/10/27 15:27:44 by vjovanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,27 +28,28 @@ SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_strtolower.c ft_strtoupper.c ft_strtrim.c ft_tolower.c \
 		ft_toupper.c ft_warning.c ft_strclen.c
 OBJ = $(subst .c,.o,$(SRCS))
-INCLUDE = .
+SRCS_DIR = $(addprefix srcs/, $(SRCS))
+INCLUDE = includes/
 
 WFLAGS = -Wall -Wextra -Werror 
 
 all: $(NAME)
 
 $(NAME):
-	@gcc $(WFLAGS) -c $(SRCS) -I $(INCLUDE)
-	@echo "Compilation des fichiers sources..."
+	@gcc $(WFLAGS) -c $(SRCS_DIR) -I $(INCLUDE)
+	@echo "Compilation des fichiers sources <libft>..."
 	@ar rc $(NAME) $(OBJ)
-	@echo "Creation de la librairie..."
+	@echo "Creation de la librairie <libft>..."
 	@ranlib $(NAME)
-	@echo "Indexation de la librairie..."
+	@echo "Indexation de la librairie <libft>..."
 
 clean:
 	@/bin/rm -rf $(OBJ)
-	@echo "Suppression des fichiers objet..."
+	@echo "Suppression des fichiers objet <libft>..."
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "Suppression de la librairie..."
+	@echo "Suppression de la librairie <libft>..."
 
 re: fclean all
 
