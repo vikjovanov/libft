@@ -6,7 +6,7 @@
 #    By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/03 17:47:59 by vjovanov          #+#    #+#              #
-#    Updated: 2018/10/27 15:27:44 by vjovanov         ###   ########.fr        #
+#    Updated: 2018/10/27 23:47:25 by vjovanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_strncmp.c ft_strncpy.c ft_strndup.c ft_strnequ.c ft_strnew.c \
 		ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c \
 		ft_strtolower.c ft_strtoupper.c ft_strtrim.c ft_tolower.c \
-		ft_toupper.c ft_warning.c ft_strclen.c
+		ft_toupper.c ft_warning.c ft_strclen.c get_next_line.c
 OBJ = $(subst .c,.o,$(SRCS))
 SRCS_DIR = $(addprefix srcs/, $(SRCS))
 INCLUDE = includes/
