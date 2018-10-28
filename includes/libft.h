@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/28 20:54:48 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/28 21:28:12 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char				*ft_strtolower(char *s);
 char				*ft_strtoupper(char *s);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
+void				ft_2dtabdel(char **tab);
 void				ft_strclr(char *s);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
