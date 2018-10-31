@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/31 01:41:03 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/31 19:09:11 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				ft_swapi(int *a, int *b);
 void				ft_swap(char *a, char *b);
 void				ft_bzero(void *s, size_t n);
 void				ft_error(const char *msg);
