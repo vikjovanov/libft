@@ -6,9 +6,11 @@
 /*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 21:28:39 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/31 19:27:07 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/31 19:42:46 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/libft.h"
 
 void	ft_2dtabdel(void **tab)
 {
