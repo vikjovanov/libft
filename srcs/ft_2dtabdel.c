@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 21:28:39 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/31 19:42:46 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/31 19:48:08 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_2dtabdel(void **tab)
 	i = 0;
 	while (tab[i])
 	{
-		ft_strdel(&(tab[i]));
+		ft_memdel(&(tab[i]));
 		i++;
 	}
 	tab = NULL;
