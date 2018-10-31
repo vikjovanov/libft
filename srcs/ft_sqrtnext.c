@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nextsqrt.c                                      :+:      :+:    :+:   */
+/*   ft_sqrtnext.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/28 20:46:39 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/28 20:46:40 by vjovanov         ###   ########.fr       */
+/*   Created: 2018/10/31 01:40:21 by vjovanov          #+#    #+#             */
+/*   Updated: 2018/10/31 01:42:02 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../includes/libft.h"
 
-int		ft_nextsqrt(int nb)
+int		ft_sqrtnext(int nb)
 {
 	int i;
 	int res;
@@ -31,5 +31,5 @@ int		ft_nextsqrt(int nb)
 	}
 	if (res == nb)
 		return (i);
-	return (ft_nextsqrt(nb + 1));
+	return (ft_sqrtnext(nb + 1));
 }

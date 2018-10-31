@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/30 23:41:28 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/10/31 01:41:03 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void				ft_error(const char *msg);
 void				ft_warning(const char *msg);
 void				ft_info(const char *msg);
 int					ft_sqrt(int nb);
-int					ft_nextsqrt(int nb);
+int					ft_sqrtnext(int nb);
 void				*ft_memset(void *s, int c, size_t n);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
