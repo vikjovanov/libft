@@ -6,7 +6,7 @@
 #    By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/03 17:47:59 by vjovanov          #+#    #+#              #
-#    Updated: 2018/10/31 19:44:32 by vjovanov         ###   ########.fr        #
+#    Updated: 2018/11/02 17:07:56 by vjovanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,23 +34,26 @@ INCLUDE = includes/
 
 WFLAGS = -Wall -Wextra -Werror 
 
+GCCRESET=\033[0m
+GCCBLUE=\033[1;36m
+
 all: $(NAME)
 
 $(NAME):
 	@gcc $(WFLAGS) -c $(SRCS_DIR) -I $(INCLUDE)
-	@echo "Compilation des fichiers sources <libft>..."
+	@echo "Compilation des fichiers sources $(GCCBLUE)<libft>$(GCCRESET)..."
 	@ar rc $(NAME) $(OBJ)
-	@echo "Creation de la librairie <libft>..."
+	@echo "Creation de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."
 	@ranlib $(NAME)
-	@echo "Indexation de la librairie <libft>..."
+	@echo "Indexation de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."
 
 clean:
 	@/bin/rm -rf $(OBJ)
-	@echo "Suppression des fichiers objet <libft>..."
+	@echo "Suppression des fichiers objet $(GCCBLUE)<libft>$(GCCRESET)..."
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "Suppression de la librairie <libft>..."
+	@echo "Suppression de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."
 
 re: fclean all
 

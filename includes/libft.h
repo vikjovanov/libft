@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/31 19:27:28 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/02 16:41:02 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "get_next_line.h"
 
 typedef struct		s_list
 {
