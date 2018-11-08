@@ -6,11 +6,11 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 13:26:38 by bcedric           #+#    #+#             */
-/*   Updated: 2018/10/28 13:47:37 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/08 19:16:02 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static size_t	ft_countletter(char const *s, char c)
 {
