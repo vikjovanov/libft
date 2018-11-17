@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/17 12:26:18 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/17 18:57:18 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_list
 void				ft_swapi(int *a, int *b);
 void				ft_swap(char *a, char *b);
 void				ft_intset(int *tab, int n, int c);
+int					ft_array_length(void **tab);
 void				ft_bzero(void *s, size_t n);
 void				ft_error(const char *msg);
 void				ft_warning(const char *msg);
