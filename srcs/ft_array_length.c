@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intset.c                                        :+:      :+:    :+:   */
+/*   ft_array_length.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/17 12:23:17 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/17 18:52:19 by vjovanov         ###   ########.fr       */
+/*   Created: 2018/11/17 18:49:31 by vjovanov          #+#    #+#             */
+/*   Updated: 2018/11/17 18:51:38 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_intset(int *tab, int n, int c)
+int		ft_array_length(void **tab)
 {
+	char **array;
 	int i;
 
 	i = 0;
-	while (i < n)
-	{
-		tab[i] = c;
+	array = (char**)tab;
+	while (array[i])
 		i++;
-	}
+	return (i);
 }
