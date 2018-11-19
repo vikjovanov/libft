@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjovanov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 01:20:10 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/19 01:20:11 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:27:20 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,44 +27,63 @@ static int	set_size_array(double n)
 	return (nb + 1);
 }
 
-static void	set_array(char *nbr, double n, int *aft_is_neg, int size_array)
+static int	set_before_comma(double n)
 {
-	while (size_array + aft_is_neg[1] > 0)
-	{
-		if (((size_array + aft_is_neg[1]) - 1) == aft_is_neg[0])
-		nbr[(size_array + aft_is_neg[1]) - 1] = (n % 10.0) + 48;
-		n /= 10;
-		size_array--;
-	}
-}
-
-static int	set_after_comma(double n)
-{
-	int nb;
+	int nb_before_comma;
 	int a;
+	int nb;
 
-	nb = 0;
+	nb_before_comma = 0;
 	a = 1;
-	if (n < a)
+	nb = (int)n;
+	if (nb < a)
 		return (1);
-	while (n <= a)
+	while (nb >= a)
 	{
-		nb++;
+		nb_before_comma++;
 		a *= 10;
 	}
-	return (nb);
+	return (nb_before_comma);
+}
+
+static void	fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
+{
+	int 	i;
+	char*	number;
+	int		size_array;
+	int		j;
+
+	i = 0;
+	size_array = set_size_array(n);
+	if (is_neg == 1)
+		nbr[i++] = '-';
+	nbr[nb_before_comma + is_neg] = '.';
+	while (i < size_array)
+	{
+		if (nbr[i] == '.')
+			i++;
+		j = -1;
+		number = ft_itoa((int)n);
+		while (number[++j])
+		{
+			nbr[i] = number[j];
+			i++;
+		}
+		n -= ft_atoi(number);
+		n *= 10;
+	}
 }
 
 /*
 ** NAME:
-** 	ft_itoa
+** 	ft_dtoa
 **
 ** DESCRIPTION:
-**	ft_itoa() convertit une valeur de type integer en chaine de caractere
+**	ft_dtoa() convertit une valeur de type double en chaine de caractere
 **	et la stocke dans une nouvelle zone de memoire (alloue avec malloc(3))
 **
 ** SYNOPSIS:
-**	int *ft_itoa(int n)
+**	int *ft_dtoa(double n)
 **
 ** PARAMS:
 ** 	n - la valeur a convertir
@@ -72,31 +91,22 @@ static int	set_after_comma(double n)
 ** RETURN VALUE:
 **	(char*) la valeur convertie
 */
-#include <stdio.h>
+
 char		*ft_dtoa(double n)
 {
 	char	*nbr;
-	int		size_array;
-	int		aft_is_neg[2];
+	int		nb_before_comma;
+	int		is_neg;
 
-	aft_is_neg[1] = 0;
-	if (n < 0)
+	is_neg = 0;
+	if (n < 0.0)
 	{
-		aft_is_neg[1] = 1;
-		n *= -1;
+		is_neg = 1;
+		n *= -1.0;
 	}
-	aft_is_neg[0] = set_after_comma(n);
-	nbr = ft_strnew(6 + aft_is_neg[1] + aft_is_neg[0] + 1);
-	if (nbr == NULL)
+	nb_before_comma = set_before_comma(n);
+	if((nbr = ft_strnew(set_size_array(n) + 1 + is_neg)) == NULL)
 		return (NULL);
-	set_array(nbr, n, aft_is_neg, size_array);
-	if (aft_is_neg[1] == 1)
-		nbr[0] = '-';
+	fill_array(n, nbr, is_neg, nb_before_comma);
 	return (nbr);
-}
-
-int main(void)
-{
-	double a = 9.45652321;
-	printf("%s\n", ft_dtoa(a));
 }
