@@ -6,61 +6,29 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 13:21:08 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/10/27 15:22:35 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/19 19:47:02 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-static int	is_over_long(const char *nptr, int i, int is_negative)
+static int	convert_to_int(const char *str, int sign)
 {
-	size_t	size;
-
-	size = 0;
-	while (ft_isdigit(nptr[i + size]) &&
-			size != ft_strlen("9223372036854775807"))
-		size++;
-	if (size == ft_strlen("9223372036854775807") && !is_negative)
-	{
-		if (ft_strcmp(&nptr[i], "9223372036854775807") >= 0)
-			return (-1);
-		else
-			return (1);
-	}
-	else if (size == ft_strlen("9223372036854775808") && is_negative)
-	{
-		if (ft_strcmp(&nptr[i], "9223372036854775808") >= 0)
-			return (0);
-		else
-			return (1);
-	}
-	return (1);
-}
-
-static int	find_index(const char *nptr)
-{
-	int i;
+	int		i;
+	long	number;
+	long	overflow;
 
 	i = 0;
-	while (nptr[i])
+	number = 0;
+	while (ft_isdigit(str[i]))
 	{
-		if (ft_isalpha(nptr[i]))
-			return (-1);
-		else if (ft_isspace(nptr[i]))
-			i++;
-		else if (ft_isdigit(nptr[i]))
-			return (i);
-		else if (nptr[i] == '+' || nptr[i] == '-')
-		{
-			if (ft_isdigit(nptr[i + 1]))
-				return (i + 1);
-			else
-				return (-1);
-		}
-		else
-			return (-1);
+		overflow = number;
+		number = (number * 10) + (str[i] - 48);
+		if (overflow && (number ^ overflow) < 0)
+			return ((sign == 1) ? -1 : 0);
+		i++;
 	}
-	return (0);
+	return ((int)number * sign);
 }
 
 /*
@@ -81,31 +49,26 @@ static int	find_index(const char *nptr)
 **	(int) la valeur convertie
 */
 
-int			ft_atoi(const char *nptr)
+int			ft_atoi(const char *str)
 {
-	int	i;
-	int	is_negative;
-	int	nbr;
-	int	over_long;
+	int i;
+	int sign;
 
-	i = find_index(nptr);
-	is_negative = 0;
-	nbr = 0;
-	if (i == -1)
-		return (0);
-	if (nptr[i - 1] == '-')
-		is_negative = 1;
-	over_long = is_over_long(nptr, i, is_negative);
-	if (over_long == 0 || over_long == -1)
-		return (over_long);
-	while (nptr[i])
+	i = 0;
+	sign = 1;
+	while (str[i])
 	{
-		if (!ft_isdigit(nptr[i]))
+		if (ft_isspace(str[i]))
+			i++;
+		else if (str[i] == '-' || str[i] == '+')
+		{
+			if (!ft_isdigit(str[i + 1]))
+				return (0);
+			sign = (str[i] == '-' ? -sign : sign);
+			i++;
+		}
+		else
 			break ;
-		nbr *= 10;
-		nbr += nptr[i++] - 48;
 	}
-	if (is_negative)
-		nbr = (nbr * -1);
-	return (nbr);
+	return (convert_to_int(&str[i], sign));
 }
