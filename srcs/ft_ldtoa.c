@@ -6,7 +6,7 @@
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 01:20:43 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/19 13:32:20 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/19 14:17:31 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,4 @@ char		*ft_ldtoa(long double n)
 		return (NULL);
 	fill_array(n, nbr, is_neg, nb_before_comma);
 	return (nbr);
-}
-
-int		main()
-{
-	long double a = 3.5888745;
-
-	printf("%s\n", ft_ldtoa(a));
-	printf("\n");
-	printf("%.*Lf\n", set_size_array(a), a);
 }

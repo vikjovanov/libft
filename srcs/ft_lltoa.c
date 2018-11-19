@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lltoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjovanov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 01:19:25 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/19 01:19:26 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/19 14:17:04 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char		*ft_lltoa(long long n)
 	int		size_array;
 
 	is_negative = 0;
-	if (n == -9223372036854775808)
+	if (n == LLONG_MIN)
 		return (ft_strdup("-9223372036854775808"));
 	if (n < 0)
 	{
