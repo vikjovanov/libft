@@ -30,7 +30,8 @@ SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_sqrtnext.c ft_sqrt.c ft_swapi.c ft_2dtabdel.c ft_intset.c \
 		ft_array_length.c ft_stoa.c ft_ctoa.c ft_ltoa.c ft_lltoa.c \
 		ft_ustoa.c ft_uctoa.c ft_ultoa.c ft_ulltoa.c ft_uitoa.c ft_dtoa.c \
-		ft_ldtoa.c
+		ft_ldtoa.c ft_itoa_base.c ft_ltoa_base.c ft_lltoa_base.c \
+		ft_uitoa_base.c ft_ultoa_base.c ft_ulltoa_base.c
 OBJ = $(subst .c,.o,$(SRCS))
 SRCS_DIR = $(addprefix srcs/, $(SRCS))
 INCLUDE = includes/

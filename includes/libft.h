@@ -113,4 +113,10 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 
+char				*ft_itoa_base(int number, int base);
+char				*ft_ltoa_base(long number, int base);
+char				*ft_lltoa_base(long long number, int base);
+char				*ft_uitoa_base(unsigned int number, int base);
+char				*ft_ultoa_base(unsigned long number, int base);
+char				*ft_ulltoa_base(unsigned long long number, int base);
 #endif
