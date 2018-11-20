@@ -84,6 +84,7 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_atoi(const char *nptr);
+unsigned long long	ft_atoull(const char *nptr);
 char				*ft_itoa(int n);
 char				*ft_stoa(short n);
 char				*ft_ctoa(char n);
