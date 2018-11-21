@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
+/*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/17 18:57:18 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/11/21 21:02:36 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_atoi(const char *nptr);
 unsigned long long	ft_atoull(const char *nptr);
+long long			ft_atoll(const char *str);
 char				*ft_itoa(int n);
 char				*ft_stoa(short n);
 char				*ft_ctoa(char n);
