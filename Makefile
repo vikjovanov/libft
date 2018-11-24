@@ -29,13 +29,13 @@ SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_toupper.c ft_warning.c ft_strclen.c get_next_line.c ft_swap.c \
 		ft_sqrtnext.c ft_sqrt.c ft_swapi.c ft_2dtabdel.c ft_intset.c \
 		ft_array_length.c ft_stoa.c ft_ctoa.c ft_ltoa.c ft_lltoa.c \
-		ft_ustoa.c ft_uctoa.c ft_ultoa.c ft_ulltoa.c ft_uitoa.c ft_dtoa.c \
-		ft_ldtoa.c ft_itoa_base.c ft_ltoa_base.c ft_lltoa_base.c \
-		ft_uitoa_base.c ft_ultoa_base.c ft_ulltoa_base.c ft_atoull.c \
-		ft_atoll.c
-OBJ = $(subst .c,.o,$(SRCS))
+		ft_ustoa.c ft_uctoa.c ft_ultoa.c ft_ulltoa.c ft_uitoa.c \
+		ft_dtoa/ft_dtoa.c ft_ldtoa/ft_ldtoa.c ft_itoa_base.c ft_ltoa_base.c \
+		ft_lltoa_base.c ft_uitoa_base.c ft_ultoa_base.c ft_ulltoa_base.c \
+		ft_atoull.c ft_atoll.c ft_dtoa/ft_dtoa_ext.c
+OBJ = $(notdir $(subst .c,.o,$(SRCS)))
 SRCS_DIR = $(addprefix srcs/, $(SRCS))
-INCLUDE = includes/
+INCLUDE = -Iincludes/ -Isrcs/ft_dtoa/
 
 WFLAGS = -Wall -Wextra -Werror 
 
@@ -45,7 +45,7 @@ GCCBLUE=\033[1;36m
 all: $(NAME)
 
 $(NAME):
-	@gcc $(WFLAGS) -c $(SRCS_DIR) -I $(INCLUDE)
+	@gcc $(WFLAGS) -c $(SRCS_DIR) $(INCLUDE)
 	@echo "Compilation des fichiers sources $(GCCBLUE)<libft>$(GCCRESET)..."
 	@ar rc $(NAME) $(OBJ)
 	@echo "Creation de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."

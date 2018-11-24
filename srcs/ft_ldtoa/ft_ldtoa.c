@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dtoa.c                                          :+:      :+:    :+:   */
+/*   ft_ldtoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 01:20:10 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/19 16:35:21 by vjovanov         ###   ########.fr       */
+/*   Created: 2018/11/19 01:20:43 by vjovanov          #+#    #+#             */
+/*   Updated: 2018/11/19 14:20:25 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static int	set_size_array(double n)
+
+
+
+#include <stdio.h>
+
+
+
+static int	set_size_array(long double n)
 {
 	int		nb;
 
@@ -27,7 +34,7 @@ static int	set_size_array(double n)
 	return (nb + 1);
 }
 
-static int	set_before_comma(double n)
+static int	set_before_comma(long double n)
 {
 	int nb_before_comma;
 	int a;
@@ -43,10 +50,11 @@ static int	set_before_comma(double n)
 		nb_before_comma++;
 		a *= 10;
 	}
+	printf("BEFORE COMMA: %d\n", nb_before_comma);
 	return (nb_before_comma);
 }
 
-static void	fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
+static void	fill_array(long double n, char *nbr, int is_neg, int nb_bf_comma)
 {
 	int 	i;
 	char*	number;
@@ -57,7 +65,7 @@ static void	fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 	size_array = set_size_array(n);
 	if (is_neg == 1)
 		nbr[i++] = '-';
-	nbr[nb_before_comma + is_neg] = '.';
+	nbr[nb_bf_comma + is_neg] = '.';
 	while (i < size_array)
 	{
 		if (nbr[i] == '.')
@@ -76,14 +84,14 @@ static void	fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 
 /*
 ** NAME:
-** 	ft_dtoa
+** 	ft_ldtoa
 **
 ** DESCRIPTION:
-**	ft_dtoa() convertit une valeur de type double en chaine de caractere
+**	ft_ldtoa() convertit une valeur de type long double en chaine de caractere
 **	et la stocke dans une nouvelle zone de memoire (alloue avec malloc(3))
 **
 ** SYNOPSIS:
-**	int *ft_dtoa(double n)
+**	int *ft_ldtoa(long double n)
 **
 ** PARAMS:
 ** 	n - la valeur a convertir
@@ -92,13 +100,14 @@ static void	fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 **	(char*) la valeur convertie
 */
 
-char		*ft_dtoa(double n)
+char		*ft_ldtoa(long double n)
 {
 	char	*nbr;
 	int		nb_before_comma;
 	int		is_neg;
 
 	is_neg = 0;
+	printf("TA MAMAN\n");
 	if (n < 0.0)
 	{
 		is_neg = 1;

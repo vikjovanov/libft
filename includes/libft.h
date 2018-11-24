@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "get_next_line.h"
+//# include "../srcs/ft_ldtoa/ft_ldtoa.h"
+# include "../srcs/ft_dtoa/ft_dtoa.h"
 
 typedef struct		s_list
 {
@@ -96,7 +98,6 @@ char				*ft_uctoa(unsigned char n);
 char				*ft_ultoa(unsigned long n);
 char				*ft_ulltoa(unsigned long long n);
 char				*ft_uitoa(unsigned int n);
-char				*ft_dtoa(double n);
 char				*ft_ldtoa(long double n);
 int					ft_isspace(int c);
 int					ft_isupper(int c);
