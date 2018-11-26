@@ -13,7 +13,7 @@
 #include "ft_dtoa.h"
 
 static long double ft_exp(double n, int exp)
-{
+{ 
 	long double	value_exp;
 	int			i;
 

@@ -16,7 +16,8 @@
 
 
 #include <stdio.h>
-
+#include <float.h>
+#include <limits.h>
 
 
 static int	set_size_array(long double n)
@@ -37,20 +38,18 @@ static int	set_size_array(long double n)
 static int	set_before_comma(long double n)
 {
 	int nb_before_comma;
-	int a;
-	int nb;
+	long double a;
 
 	nb_before_comma = 0;
 	a = 1;
-	nb = (int)n;
-	if (nb < a)
+	if (n < a)
 		return (1);
-	while (nb >= a)
+	while (n >= a)
 	{
 		nb_before_comma++;
 		a *= 10;
 	}
-	printf("BEFORE COMMA: %d\n", nb_before_comma);
+	printf("nb_before_comma : %d\n", nb_before_comma);
 	return (nb_before_comma);
 }
 
@@ -63,6 +62,7 @@ static void	fill_array(long double n, char *nbr, int is_neg, int nb_bf_comma)
 
 	i = 0;
 	size_array = set_size_array(n);
+	printf("SIZE_ARRAY: %d\n", size_array);
 	if (is_neg == 1)
 		nbr[i++] = '-';
 	nbr[nb_bf_comma + is_neg] = '.';
@@ -107,7 +107,6 @@ char		*ft_ldtoa(long double n)
 	int		is_neg;
 
 	is_neg = 0;
-	printf("TA MAMAN\n");
 	if (n < 0.0)
 	{
 		is_neg = 1;
@@ -119,3 +118,12 @@ char		*ft_ldtoa(long double n)
 	fill_array(n, nbr, is_neg, nb_before_comma);
 	return (nbr);
 }
+
+int		main()
+{
+	long double a = LDBL_MAX;
+	printf("%lu\n", sizeof(a));
+	ft_ldtoa(LDBL_MAX);
+	return 0;
+}
+
