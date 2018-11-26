@@ -20,37 +20,6 @@
 
 //recuperer uniquement le intpart en faisant un genre de dtoa et ensuite recaster le char en double int
 
-static char*	ft_pow(char *number, int precision)
-{
-	int	i;
-	int	prec;
-
-	i = 0;
-	prec = precision;
-	while (prec > 0 && number[prec] != '.')
-	{
-		if (number[prec + 1] >= '5')
-		{
-			if (number[prec] == '9')
-				i++;
-			else
-			{
-				number[prec]++;
-				break ;
-			}
-			prec--;
-		}
-		else
-			break ;
-	}
-	while (i >= 0)
-	{
-		number[(precision - i) + 1] = '0';
-		i--; 
-	}
-	return (number);
-}
-
 static long double ft_exp(double n, int exp)
 { 
 	long double	value_exp;
@@ -130,16 +99,19 @@ static int		intdtoa(double x, int is_neg, double *ipart, double *fpart)
 		return (0);
 	if (is_neg)
 		stringx[i++] = '-';
-	printf("%f\n", nb);
+	nb /= ft_exp(10, size_array - 1);
+	printf("nb : %f\n", nb);
 	while (i < size_array)
 	{
-		printf("size_array - i : %d | set_before_comma: %d | a : %c\n", size_array - i, set_before_comma(nb), ((int)(nb / ft_exp(10, size_array - i - 1))) + 48);
-		stringx[i] = ((int)(nb / ft_exp(10, size_array - i - 1))) + 48;
-		nb -= ((stringx[i] - 48) * ft_exp(10, size_array - i - 1));
-		printf("nb : %f\n", nb);
+		stringx[i] = ((int)nb) + 48;
+		printf("stringx[%d] : %c\n", i, stringx[i]);
+		nb *= 10;
+		printf("nb: %f\n", nb);
+		nb -= ((stringx[i] - 48) * 10);
+		printf("nb 2 : %f\n", nb);
 		i++;
 	}
-	ft_pow(stringx, size_array);
+	printf("STRING : %s\n", stringx);
 	exploder(x, ipart, fpart, stringx);
 	return (1);
 }
@@ -152,14 +124,27 @@ double			ft_modf(double x, double *intpart)
 	is_neg = 0;
 	if (x < 0)
 		is_neg = 1;
-	fractpart = 0;
-	intdtoa(x, is_neg, intpart, &fractpart);
+	if (x == DBL_MAX)
+	{
+		*intpart = DBL_MAX;
+		fractpart = 0.000000;
+	}
+	else if (x == -DBL_MAX)
+	{
+		*intpart = -DBL_MAX;
+		fractpart = -0.000000;
+	}
+	else
+	{
+		fractpart = 0;
+		intdtoa(x, is_neg, intpart, &fractpart);
+	}
 	return (fractpart);
 }
 #include <math.h>
 int main()
 {
-	double x = DBL_MAX;
+	double x = 5434354324354354354324.562416564354354354354;
 	double intpart;
 	double fractpart;
 
