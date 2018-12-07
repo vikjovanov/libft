@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dtoa_ext.c                                      :+:      :+:    :+:   */
+/*   ft_ldtoa_ext.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/24 15:14:27 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/12/07 13:13:18 by vjovanov         ###   ########.fr       */
+/*   Created: 2018/12/07 12:55:41 by vjovanov          #+#    #+#             */
+/*   Updated: 2018/12/07 13:15:23 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dtoa.h"
+#include "ft_ldtoa.h"
 
-long double ft_exp_d(long double n, int exp)
+long double ft_exp_ld(long double n, int exp)
 { 
 	long double	value_exp;
 	int	i;
@@ -29,7 +29,7 @@ long double ft_exp_d(long double n, int exp)
 	return (value_exp);
 }
 
-int	set_size_array_d(double n)
+int	set_size_array_ld(long double n)
 {
 	int		nb;
 
@@ -44,10 +44,10 @@ int	set_size_array_d(double n)
 	return (nb + 1);
 }
 
-int	set_before_comma_d(double n)
+int	set_before_comma_ld(long double n)
 {
 	int nb_before_comma;
-	double a;
+	long double a;
 
 	nb_before_comma = 0;
 	a = 1.0;

@@ -5,82 +5,117 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 01:20:43 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/19 14:20:25 by vjovanov         ###   ########.fr       */
+/*   Created: 2018/12/07 12:55:29 by vjovanov          #+#    #+#             */
+/*   Updated: 2018/12/07 14:09:38 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "ft_ldtoa.h"
 
-
-
-
-#include <stdio.h>
-#include <float.h>
-#include <limits.h>
-
-
-static int	set_size_array(long double n)
+static void	fill_array(long double n, char *nbr, int is_neg, int nb_bef_comma)
 {
-	int		nb;
-
-	nb = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= 10;
-		nb++;
-	}
-	return (nb + 1);
-}
-
-static int	set_before_comma(long double n)
-{
-	int nb_before_comma;
-	long double a;
-
-	nb_before_comma = 0;
-	a = 1;
-	if (n < a)
-		return (1);
-	while (n >= a)
-	{
-		nb_before_comma++;
-		a *= 10;
-	}
-	printf("nb_before_comma : %d\n", nb_before_comma);
-	return (nb_before_comma);
-}
-
-static void	fill_array(long double n, char *nbr, int is_neg, int nb_bf_comma)
-{
-	int 	i;
-	char*	number;
-	int		size_array;
-	int		j;
+	int 		i;
+	char*		number;
+	int			size_array;
+	long long 	ntmp;
 
 	i = 0;
-	size_array = set_size_array(n);
-	printf("SIZE_ARRAY: %d\n", size_array);
+	size_array = set_size_array_ld(n);
 	if (is_neg == 1)
 		nbr[i++] = '-';
-	nbr[nb_bf_comma + is_neg] = '.';
+	nbr[nb_bef_comma + is_neg] = '.';
+	n /= ft_exp_ld(10, nb_bef_comma - 1);
 	while (i < size_array)
 	{
 		if (nbr[i] == '.')
 			i++;
-		j = -1;
-		number = ft_itoa((int)n);
-		while (number[++j])
-		{
-			nbr[i] = number[j];
-			i++;
-		}
-		n -= ft_atoi(number);
+		nbr[i] = (int)n + 48;
 		n *= 10;
+		n -= ((nbr[i] - 48) * 10);
+		i++;
 	}
 }
+
+static int		check_binary(char *n_bin, char *nbr)
+{
+	char sign;
+	char *exponent;
+	char *mantisse;
+	int	i;
+
+	i = 0;
+	if (n_bin[0] == '1')
+		nbr[i++] = '-';
+	exponent = ft_strndup(&n_bin[1], EXP_BIT_64_LD);
+	mantisse = ft_strndup(&n_bin[12], MANT_BIT_64_LD);
+	if (exponent == NULL || mantisse == NULL)
+		return (0);
+	if (ft_strchr(exponent, '0') == NULL)
+	{
+		if (ft_strchr(mantisse, '1') != NULL)
+			ft_memcpy(&(nbr[i]), "nan", 3);
+		else
+			ft_memcpy(&(nbr[i]), "inf", 3);
+	}
+	else if (!(ft_strchr(exponent, '1')) && !(ft_strchr(mantisse, '1')))
+		nbr[i] = '0';
+	ft_strdel(&exponent);
+	ft_strdel(&mantisse);
+	return (1);
+}
+
+static char 	*convert_to_ieee754(long double n)
+{
+	unsigned int	i;
+	unsigned int	j;
+	unsigned char 	*val;
+	char			*n_bin;
+	
+	val = (unsigned char *)&n;
+	if (!(n_bin = (char*)malloc(sizeof(char) *
+		((CHAR_BIT * EXTENDED_PRECISION_SIZEOF + 1)))))
+		return (NULL);
+	n_bin[CHAR_BIT * EXTENDED_PRECISION_SIZEOF] = '\0';
+	i = CHAR_BIT * EXTENDED_PRECISION_SIZEOF;
+	j = 0;
+	while (i--)
+	{
+		n_bin[j] = (val[i / CHAR_BIT] & (1 << (i % CHAR_BIT)))
+			? '1' : '0';
+		j++;
+	}
+	return (n_bin);
+}
+
+/*
+** formule de conversion : 
+** (-1)^Sign * (1 + mantisse) * 2^exposant
+**
+**
+** long double	ieee754_to_decimal(char *binary)
+** {
+** 	int exposant;
+** 	long double mantisse;
+** 	int	i;
+** 
+** 	i = 0;
+** 	exposant = 0;
+** 	while (i < EXP_BIT_64_LD)
+** 	{
+** 		exposant += ((binary[(EXP_BIT_64_LD - i)] - 48) * ft_exp_ld(2, i));
+** 		i++;
+** 	}
+** 	exposant -= EXP_BIAS_64_LD;
+** 	i = EXP_BIT_64_LD + 2;
+** 	mantisse = 0.0;
+** 	while (i < (MANT_BIT_64_LD + (EXP_BIT_64_LD + 1)))
+** 	{
+** 		mantisse += ((binary[i] - 48) * (1 / ft_exp_ld(2, i - (EXP_BIT_64_LD + 1))));
+** 		i++;
+** 	}
+** 	return (ft_exp_ld(-1, 0) * (1 + mantisse) * ft_exp_ld(2, exposant));
+** }
+*/
 
 /*
 ** NAME:
@@ -102,28 +137,22 @@ static void	fill_array(long double n, char *nbr, int is_neg, int nb_bf_comma)
 
 char		*ft_ldtoa(long double n)
 {
-	char	*nbr;
-	int		nb_before_comma;
-	int		is_neg;
+	char		*nbr;
+	char		*n_bin;
+	int			is_neg;
 
-	is_neg = 0;
-	if (n < 0.0)
-	{
-		is_neg = 1;
-		n *= -1.0;
-	}
-	nb_before_comma = set_before_comma(n);
-	if((nbr = ft_strnew(set_size_array(n) + 1 + is_neg)) == NULL)
+	if (!(n_bin = convert_to_ieee754(n)))
 		return (NULL);
-	fill_array(n, nbr, is_neg, nb_before_comma);
+	nbr = ft_strnew(4);
+	if (!check_binary(n_bin, nbr))
+		return (NULL);
+	if (nbr[0] != '\0' && !ft_strequ(nbr, "-"))
+		return (nbr);
+	ft_strdel(&nbr);
+	is_neg = (n > 0) ? 0 : 1;
+	n *= (is_neg == 1) ? -1 : 1;
+	if (!(nbr = ft_strnew(set_size_array_ld(n))))
+		return (NULL);
+	fill_array(n, nbr, is_neg, set_before_comma_ld(n));
 	return (nbr);
 }
-
-int		main()
-{
-	long double a = LDBL_MAX;
-	printf("%lu\n", sizeof(a));
-	ft_ldtoa(LDBL_MAX);
-	return 0;
-}
-

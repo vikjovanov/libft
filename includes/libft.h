@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
+/*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 21:32:31 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/21 21:02:36 by vjovanov         ###   ########.fr       */
+/*   Updated: 2018/12/07 13:17:03 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "get_next_line.h"
-//# include "../srcs/ft_ldtoa/ft_ldtoa.h"
+# include "../srcs/ft_ldtoa/ft_ldtoa.h"
 # include "../srcs/ft_dtoa/ft_dtoa.h"
 #include "float.h"
 
@@ -99,7 +99,6 @@ char				*ft_uctoa(unsigned char n);
 char				*ft_ultoa(unsigned long n);
 char				*ft_ulltoa(unsigned long long n);
 char				*ft_uitoa(unsigned int n);
-char				*ft_ldtoa(long double n);
 int					ft_isspace(int c);
 int					ft_isupper(int c);
 int					ft_islower(int c);
