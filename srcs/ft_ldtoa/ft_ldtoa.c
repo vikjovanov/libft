@@ -15,9 +15,7 @@
 static void	fill_array(long double n, char *nbr, int is_neg, int nb_bef_comma)
 {
 	int 		i;
-	char*		number;
 	int			size_array;
-	long long 	ntmp;
 
 	i = 0;
 	size_array = set_size_array_ld(n);
@@ -38,7 +36,6 @@ static void	fill_array(long double n, char *nbr, int is_neg, int nb_bef_comma)
 
 static int		check_binary(char *n_bin, char *nbr)
 {
-	char sign;
 	char *exponent;
 	char *mantisse;
 	int	i;
