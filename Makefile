@@ -33,7 +33,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_dtoa/ft_dtoa.c ft_ldtoa/ft_ldtoa.c ft_ldtoa/ft_ldtoa_ext.c \
 		ft_itoa_base.c ft_ltoa_base.c ft_lltoa_base.c ft_uitoa_base.c \
 		ft_ultoa_base.c ft_ulltoa_base.c ft_atoull.c ft_atoll.c \
-		ft_dtoa/ft_dtoa_ext.c
+		ft_dtoa/ft_dtoa_ext.c ft_strreplace.c ft_strdupwc.c
 OBJ = $(notdir $(subst .c,.o,$(SRCS)))
 SRCS_DIR = $(addprefix srcs/, $(SRCS))
 INCLUDE = -Iincludes/ -Isrcs/ft_dtoa/ -Isrcs/ft_ldtoa/
