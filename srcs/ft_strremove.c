@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strremove(char *str, int start, int len)
+char	*ft_strremove(const char *str, int start, int len)
 {
 	int i;
 	char *new;

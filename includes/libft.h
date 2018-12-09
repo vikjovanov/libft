@@ -64,7 +64,7 @@ char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack, const char *needle,
 size_t len);
 void				ft_strreplace(char *str, char needle, char replace);
-char				*ft_strremove(char *str, int start, int len);
+char				*ft_strremove(const char *str, int start, int len);
 char				*ft_strtolower(char *s);
 char				*ft_strtoupper(char *s);
 char				*ft_strnew(size_t size);
