@@ -12,10 +12,10 @@
 
 #include "ft_dtoa.h"
 
-long double ft_exp_d(long double n, int exp)
-{ 
+long double	ft_exp_d(long double n, int exp)
+{
 	long double	value_exp;
-	int	i;
+	int			i;
 
 	value_exp = n;
 	i = 0;
@@ -29,7 +29,7 @@ long double ft_exp_d(long double n, int exp)
 	return (value_exp);
 }
 
-int	set_size_array_d(double n)
+int			set_size_array_d(double n)
 {
 	int		nb;
 
@@ -44,10 +44,10 @@ int	set_size_array_d(double n)
 	return (nb + 1);
 }
 
-int	set_before_comma_d(double n)
+int			set_before_comma_d(double n)
 {
-	int nb_before_comma;
-	double a;
+	int		nb_before_comma;
+	double	a;
 
 	nb_before_comma = 0;
 	a = 1.0;

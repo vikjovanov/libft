@@ -14,8 +14,8 @@
 
 static long long	convert_to_ll(const char *str, int sign)
 {
-	int		i;
-	long long 	number;
+	int			i;
+	long long	number;
 	long long	overflow;
 
 	i = 0;
@@ -49,7 +49,7 @@ static long long	convert_to_ll(const char *str, int sign)
 **	(long long) la valeur convertie
 */
 
-long long		ft_atoll(const char *str)
+long long			ft_atoll(const char *str)
 {
 	int i;
 	int sign;

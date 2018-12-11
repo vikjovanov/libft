@@ -32,8 +32,9 @@ static int	set_size_array(unsigned short n)
 ** 	ft_ustoa
 **
 ** DESCRIPTION:
-**	ft_ustoa() convertit une valeur de type unsigned short en chaine de caractere
-**	et la stocke dans une nouvelle zone de memoire (alloue avec malloc(3))
+**	ft_ustoa() convertit une valeur de type unsigned short en chaine de
+**	caractere et la stocke dans une nouvelle zone de memoire
+**	(alloue avec malloc(3))
 **
 ** SYNOPSIS:
 **	int *ft_ustoa(unsigned short n)

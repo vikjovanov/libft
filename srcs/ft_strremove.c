@@ -14,9 +14,9 @@
 
 char	*ft_strremove(const char *str, int start, int len)
 {
-	int i;
-	char *new;
-	int strlen;
+	int		i;
+	char	*new;
+	int		strlen;
 
 	strlen = ft_strlen(str);
 	i = 0;
@@ -34,7 +34,7 @@ char	*ft_strremove(const char *str, int start, int len)
 	while (str[i])
 	{
 		new[i - len] = str[i];
-		i++;	
+		i++;
 	}
 	return (new);
 }

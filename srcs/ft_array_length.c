@@ -14,8 +14,8 @@
 
 int		ft_array_length(void **tab)
 {
-	char **array;
-	int i;
+	char	**array;
+	int		i;
 
 	i = 0;
 	array = (char**)tab;

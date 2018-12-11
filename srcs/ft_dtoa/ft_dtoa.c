@@ -109,7 +109,7 @@ static char 	*convert_to_ieee754(double n)
 ** 		i++;
 **	}
 **	return (ft_exp(-1, 0) * (1 + mantisse) * ft_exp(2, exposant));
-**}
+** }
 */
 
 /*
@@ -129,7 +129,7 @@ static char 	*convert_to_ieee754(double n)
 ** RETURN VALUE:
 **	(char*) la valeur convertie
 */
-#include <stdio.h>
+
 char		*ft_dtoa(double n)
 {
 	char		*nbr;

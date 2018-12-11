@@ -26,7 +26,7 @@ char	*ft_strdupwc(char *str, char ban)
 	j = -1;
 	while (str[++i])
 		if (str[i] != ban)
-			new_size++;	
+			new_size++;
 	if (!(new_str = ft_strnew(new_size)))
 		return (NULL);
 	i = -1;

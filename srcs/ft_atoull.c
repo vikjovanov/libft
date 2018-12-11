@@ -45,7 +45,7 @@ static unsigned long long	convert_to_ull(const char *nptr)
 **	(int) la valeur convertie
 */
 
-unsigned long long	ft_atoull(const char *nptr)
+unsigned long long			ft_atoull(const char *nptr)
 {
 	int i;
 

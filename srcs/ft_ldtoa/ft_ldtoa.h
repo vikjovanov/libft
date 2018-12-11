@@ -15,9 +15,8 @@
 
 # include "libft.h"
 
-
 # ifndef CHAR_BIT
-# define CHAR_BIT __CHAR_BIT__
+#  define CHAR_BIT __CHAR_BIT__
 # endif
 
 # define MANT_BIT_64_LD 64
@@ -29,6 +28,5 @@ char		*ft_ldtoa(long double n);
 long double ft_exp_ld(long double n, int exp);
 int			set_size_array_ld(long double n);
 int			set_before_comma_ld(long double n);
-
 
 #endif

@@ -53,7 +53,7 @@ static void	convert(char *nbr, long number, int base, int is_negative)
 			if (((number % base) * -1) >= 10)
 				nbr[length - 1] = (((number % base) * -1) + 'a') - 10;
 			else
-				nbr[length - 1] = ((number  % base) * -1) + 48;
+				nbr[length - 1] = ((number % base) * -1) + 48;
 			number /= base;
 			length--;
 		}

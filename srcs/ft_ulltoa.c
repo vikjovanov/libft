@@ -32,7 +32,7 @@ static int	set_size_array(unsigned long long n)
 ** 	ft_ulltoa
 **
 ** DESCRIPTION:
-**	ft_ulltoa() convertit une valeur de type unsigned long long 
+**	ft_ulltoa() convertit une valeur de type unsigned long long
 **	en chaine de caractere
 **	et la stocke dans une nouvelle zone de memoire (alloue avec malloc(3))
 **

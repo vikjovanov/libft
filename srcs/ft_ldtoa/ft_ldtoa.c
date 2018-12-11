@@ -14,7 +14,7 @@
 
 static void	fill_array(long double n, char *nbr, int is_neg, int nb_bef_comma)
 {
-	int 		i;
+	int			i;
 	int			size_array;
 
 	i = 0;
@@ -34,11 +34,11 @@ static void	fill_array(long double n, char *nbr, int is_neg, int nb_bef_comma)
 	}
 }
 
-static int		check_binary(char *n_bin, char *nbr)
+static int	check_binary(char *n_bin, char *nbr)
 {
-	char *exponent;
-	char *mantisse;
-	int	i;
+	char	*exponent;
+	char	*mantisse;
+	int		i;
 
 	i = 0;
 	if (n_bin[0] == '1')
@@ -61,13 +61,13 @@ static int		check_binary(char *n_bin, char *nbr)
 	return (1);
 }
 
-static char 	*convert_to_ieee754(long double n)
+static char	*convert_to_ieee754(long double n)
 {
 	unsigned int	i;
 	unsigned int	j;
-	unsigned char 	*val;
+	unsigned char	*val;
 	char			*n_bin;
-	
+
 	val = (unsigned char *)&n;
 	if (!(n_bin = (char*)malloc(sizeof(char) *
 		((CHAR_BIT * EXTENDED_PRECISION_SIZEOF + 1)))))
@@ -85,7 +85,7 @@ static char 	*convert_to_ieee754(long double n)
 }
 
 /*
-** formule de conversion : 
+** formule de conversion :
 ** (-1)^Sign * (1 + mantisse) * 2^exposant
 **
 **
@@ -94,7 +94,7 @@ static char 	*convert_to_ieee754(long double n)
 ** 	int exposant;
 ** 	long double mantisse;
 ** 	int	i;
-** 
+**
 ** 	i = 0;
 ** 	exposant = 0;
 ** 	while (i < EXP_BIT_64_LD)
@@ -107,7 +107,8 @@ static char 	*convert_to_ieee754(long double n)
 ** 	mantisse = 0.0;
 ** 	while (i < (MANT_BIT_64_LD + (EXP_BIT_64_LD + 1)))
 ** 	{
-** 		mantisse += ((binary[i] - 48) * (1 / ft_exp_ld(2, i - (EXP_BIT_64_LD + 1))));
+** 		mantisse += ((binary[i] - 48) *
+**								(1 / ft_exp_ld(2, i - (EXP_BIT_64_LD + 1))));
 ** 		i++;
 ** 	}
 ** 	return (ft_exp_ld(-1, 0) * (1 + mantisse) * ft_exp_ld(2, exposant));
