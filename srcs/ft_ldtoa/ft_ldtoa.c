@@ -44,7 +44,7 @@ static int	check_binary(char *n_bin, char *nbr)
 	if (n_bin[0] == '1')
 		nbr[i++] = '-';
 	exponent = ft_strndup(&n_bin[1], EXP_BIT_64_LD);
-	mantisse = ft_strndup(&n_bin[12], MANT_BIT_64_LD);
+	mantisse = ft_strndup(&n_bin[EXP_BIT_64_LD + 1], MANT_BIT_64_LD);
 	if (exponent == NULL || mantisse == NULL)
 		return (0);
 	if (ft_strchr(exponent, '0') == NULL)
@@ -55,7 +55,7 @@ static int	check_binary(char *n_bin, char *nbr)
 			ft_memcpy(&(nbr[i]), "inf", 3);
 	}
 	else if (!(ft_strchr(exponent, '1')) && !(ft_strchr(mantisse, '1')))
-		nbr[i] = '0';
+		ft_memcpy(&(nbr[i]), "0.00", 4);
 	ft_strdel(&exponent);
 	ft_strdel(&mantisse);
 	return (1);
@@ -68,9 +68,9 @@ static char	*convert_to_ieee754(long double n)
 	unsigned char	*val;
 	char			*n_bin;
 
-	val = (unsigned char *)&n;
+	val = (unsigned char*)&n;
 	if (!(n_bin = (char*)malloc(sizeof(char) *
-		((CHAR_BIT * EXTENDED_PRECISION_SIZEOF + 1)))))
+		((CHAR_BIT * EXTENDED_PRECISION_SIZEOF) + 1))))
 		return (NULL);
 	n_bin[CHAR_BIT * EXTENDED_PRECISION_SIZEOF] = '\0';
 	i = CHAR_BIT * EXTENDED_PRECISION_SIZEOF;
@@ -141,7 +141,7 @@ char		*ft_ldtoa(long double n)
 
 	if (!(n_bin = convert_to_ieee754(n)))
 		return (NULL);
-	nbr = ft_strnew(4);
+	nbr = ft_strnew(5);
 	if (!check_binary(n_bin, nbr))
 		return (NULL);
 	if (nbr[0] != '\0' && !ft_strequ(nbr, "-"))

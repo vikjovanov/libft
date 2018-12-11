@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
+/*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 01:20:10 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/12/07 14:10:04 by vjovanov         ###   ########.fr       */
+/*   Created: 2018/12/11 15:17:13 by vjovanov          #+#    #+#             */
+/*   Updated: 2018/12/11 15:17:15 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dtoa.h"
 
-static void	fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
+static void		fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 {
-	int 		i;
+	int			i;
 	int			size_array;
 
 	i = 0;
@@ -36,15 +36,15 @@ static void	fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 
 static int		check_binary(char *n_bin, char *nbr)
 {
-	char *exponent;
-	char *mantisse;
-	int	i;
+	char	*exponent;
+	char	*mantisse;
+	int		i;
 
 	i = 0;
 	if (n_bin[0] == '1')
 		nbr[i++] = '-';
 	exponent = ft_strndup(&n_bin[1], EXP_BIT_64);
-	mantisse = ft_strndup(&n_bin[12], MANT_BIT_64);
+	mantisse = ft_strndup(&n_bin[EXP_BIT_64 + 1], MANT_BIT_64);
 	if (exponent == NULL || mantisse == NULL)
 		return (0);
 	if (ft_strchr(exponent, '0') == NULL)
@@ -61,30 +61,31 @@ static int		check_binary(char *n_bin, char *nbr)
 	return (1);
 }
 
-static char 	*convert_to_ieee754(double n)
+static char		*convert_to_ieee754(double n)
 {
 	unsigned int	i;
 	unsigned int	j;
-	unsigned char 	*val;
+	unsigned char	*val;
 	char			*n_bin;
-	
-	val = (unsigned char *)&n;
-	if (!(n_bin = (char*)malloc(sizeof(char) * ((CHAR_BIT * sizeof(n)) + 1))))
+	unsigned long	sizeofn;
+
+	val = (unsigned char*)&n;
+	sizeofn = sizeof(n);
+	if (!(n_bin = (char*)malloc(sizeof(char) * ((CHAR_BIT * sizeofn + 1)))))
 		return (NULL);
 	n_bin[CHAR_BIT * sizeof(n)] = '\0';
 	i = CHAR_BIT * sizeof(n);
 	j = 0;
 	while (i--)
 	{
-		n_bin[j] = (val[i / CHAR_BIT] & (1 << (i % CHAR_BIT)))
-			? '1' : '0';
+		n_bin[j] = (val[i / CHAR_BIT] & (1 << (i % CHAR_BIT))) ? '1' : '0';
 		j++;
 	}
 	return (n_bin);
 }
 
 /*
-** formule de conversion : 
+** formule de conversion :
 ** (-1)^Sign * (1 + mantisse) * 2^exposant
 **
 **
@@ -93,7 +94,7 @@ static char 	*convert_to_ieee754(double n)
 ** 	int exposant;
 ** 	double mantisse;
 ** 	int	i;
-** 
+**
 ** 	i = 0;
 ** 	exposant = 0;
 ** 	while (i < EXP_BIT_64)
@@ -130,7 +131,7 @@ static char 	*convert_to_ieee754(double n)
 **	(char*) la valeur convertie
 */
 
-char		*ft_dtoa(double n)
+char			*ft_dtoa(double n)
 {
 	char		*nbr;
 	char		*n_bin;

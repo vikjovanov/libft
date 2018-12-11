@@ -53,7 +53,7 @@ int			set_before_comma_ld(long double n)
 	a = 1.0;
 	if (n < a)
 		return (1);
-	while (n >= a && a <= DBL_MAX)
+	while (n >= a && a <= LDBL_MAX)
 	{
 		nb_before_comma++;
 		a *= 10.0;
