@@ -55,7 +55,7 @@ static int		check_binary(char *n_bin, char *nbr)
 			ft_memcpy(&(nbr[i]), "inf", 3);
 	}
 	else if (!(ft_strchr(exponent, '1')) && !(ft_strchr(mantisse, '1')))
-		nbr[i] = '0';
+		ft_memcpy(&(nbr[i]), "0.00", 4);
 	ft_strdel(&exponent);
 	ft_strdel(&mantisse);
 	return (1);
@@ -129,7 +129,7 @@ static char 	*convert_to_ieee754(double n)
 ** RETURN VALUE:
 **	(char*) la valeur convertie
 */
-
+#include <stdio.h>
 char		*ft_dtoa(double n)
 {
 	char		*nbr;
@@ -138,7 +138,7 @@ char		*ft_dtoa(double n)
 
 	if (!(n_bin = convert_to_ieee754(n)))
 		return (NULL);
-	nbr = ft_strnew(4);
+	nbr = ft_strnew(5);
 	if (!check_binary(n_bin, nbr))
 		return (NULL);
 	if (nbr[0] != '\0' && !ft_strequ(nbr, "-"))
