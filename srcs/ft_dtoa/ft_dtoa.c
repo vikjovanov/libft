@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_dtoa.h"
-
+#include <stdio.h>
 static void		fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 {
 	int			i;
