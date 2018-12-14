@@ -31,6 +31,7 @@ typedef struct		s_list
 void				ft_swapi(int *a, int *b);
 void				ft_swap(char *a, char *b);
 void				ft_intset(int *tab, int n, int c);
+void				ft_initarray(char **tab, int size);
 int					ft_array_length(void **tab);
 void				ft_bzero(void *s, size_t n);
 void				ft_error(const char *msg);
@@ -69,7 +70,7 @@ char				*ft_strtolower(char *s);
 char				*ft_strtoupper(char *s);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
-void				ft_2dtabdel(void **tab);
+void				ft_2dtabdel(void **tab, int size);
 void				ft_strclr(char *s);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_dtoa.h"
-#include <stdio.h>
+
 static void		fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 {
 	int			i;
@@ -27,7 +27,7 @@ static void		fill_array(double n, char *nbr, int is_neg, int nb_before_comma)
 	{
 		if (nbr[i] == '.')
 			i++;
-		nbr[i] = (int)n + 48;
+		nbr[i] = ((int)(n + 1e-9)) + 48;
 		n *= 10;
 		n -= ((nbr[i] - 48) * 10);
 		i++;
@@ -142,6 +142,7 @@ char			*ft_dtoa(double n)
 	nbr = ft_strnew(5);
 	if (!check_binary(n_bin, nbr))
 		return (NULL);
+	ft_strdel(&n_bin);
 	if (nbr[0] != '\0' && !ft_strequ(nbr, "-"))
 		return (nbr);
 	ft_strdel(&nbr);

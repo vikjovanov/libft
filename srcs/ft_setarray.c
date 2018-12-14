@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_2dtabdel.c                                      :+:      :+:    :+:   */
+/*   ft_setarray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
+/*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/28 21:28:39 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/03 16:05:43 by vjovanov         ###   ########.fr       */
+/*   Created: 2018/12/14 12:47:24 by vjovanov          #+#    #+#             */
+/*   Updated: 2018/12/14 12:47:24 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-
-void	ft_2dtabdel(void **tab, int size)
+void	ft_initarray(char **tab, char *c, int size)
 {
 	int i;
 
-	i = 0;
-	while (i < size)
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-	tab = NULL;
+	i = -1;
+	while (tab[++i])
+		tab[i] = c;
 }

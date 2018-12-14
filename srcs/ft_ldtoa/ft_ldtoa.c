@@ -144,6 +144,7 @@ char		*ft_ldtoa(long double n)
 	nbr = ft_strnew(5);
 	if (!check_binary(n_bin, nbr))
 		return (NULL);
+	ft_strdel(&n_bin);
 	if (nbr[0] != '\0' && !ft_strequ(nbr, "-"))
 		return (nbr);
 	ft_strdel(&nbr);
