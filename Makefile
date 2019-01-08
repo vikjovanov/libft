@@ -86,7 +86,7 @@ GCCBLUE=\033[1;36m
 all: $(NAME)
 
 $(NAME):
-	gcc $(WFLAGS) -c $(SRCS_DIR) $(SRCS_DIR_PRINTF) $(SRCS_CONVERT_DIR_PRINTF) $(SRCS_FLAGS_DIR_PRINTF) $(INCLUDE)
+	@gcc $(WFLAGS) -c $(SRCS_DIR) $(SRCS_DIR_PRINTF) $(SRCS_CONVERT_DIR_PRINTF) $(SRCS_FLAGS_DIR_PRINTF) $(INCLUDE)
 	@echo "Compilation des fichiers sources $(GCCBLUE)<libft>$(GCCRESET)..."
 	@ar rc $(NAME) $(OBJ) $(OBJ_PRINTF) $(OBJ_FLAGS_PRINTF) $(OBJ_CONVERT_PRINTF)
 	@echo "Creation de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."
