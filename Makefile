@@ -37,7 +37,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_itoa_base.c ft_ltoa_base.c ft_lltoa_base.c ft_uitoa_base.c \
 		ft_ultoa_base.c ft_ulltoa_base.c ft_atoull.c ft_atoll.c \
 		ft_dtoa/ft_dtoa_ext.c ft_strreplace.c ft_strdupwc.c ft_strremove.c \
-		ft_initarray.c
+		ft_initarray.c ft_nblen.c
 
 ######## FT_PRINTF ########
 
