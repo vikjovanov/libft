@@ -12,7 +12,10 @@
 
 NAME = libft.a
 
-GIT =
+######## LIBFT ########
+
+# SOURCE FILES
+
 SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_islower.c ft_isprint.c ft_isspace.c \
 		ft_isupper.c ft_itoa.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c \
@@ -35,9 +38,6 @@ SRCS = ft_atoi.c ft_bzero.c ft_error.c ft_info.c ft_isalnum.c ft_isalpha.c \
 		ft_ultoa_base.c ft_ulltoa_base.c ft_atoull.c ft_atoll.c \
 		ft_dtoa/ft_dtoa_ext.c ft_strreplace.c ft_strdupwc.c ft_strremove.c \
 		ft_initarray.c
-OBJ = $(notdir $(subst .c,.o,$(SRCS)))
-SRCS_DIR = $(addprefix srcs/, $(SRCS))
-INCLUDE = -Iincludes/ -Isrcs/ft_dtoa/ -Isrcs/ft_ldtoa/
 
 ######## FT_PRINTF ########
 
@@ -45,10 +45,8 @@ INCLUDE = -Iincludes/ -Isrcs/ft_dtoa/ -Isrcs/ft_ldtoa/
 
 SRCS_PRINTF= ft_printf.c fill_data.c data.c config_checker.c config.c sub_checker.c \
 		dispatcher.c set_type.c formatting.c
-SRCS_DIR_PRINTF= $(addprefix srcs/ft_printf/, $(SRCS_PRINTF))
-
-#OBJ
-OBJ_PRINTF= $(subst .c,.o,$(SRCS_PRINTF))
+SRCS_DIR_PRINTF= $(addprefix ft_printf/, $(SRCS_PRINTF))
+SRCS+= $(SRCS_DIR_PRINTF)
 
 #####
 
@@ -58,10 +56,8 @@ SRCS_CONVERT_PRINTF = convert_char.c convert_double.c convert_hexa.c convert_int
 				convert_hexa_upper.c convert_octal.c convert_pointer.c \
 				convert_string.c convert_unsigned.c convert_percent.c \
 				convert_binary.c
-SRCS_CONVERT_DIR_PRINTF= $(addprefix srcs/ft_printf/convert/, $(SRCS_CONVERT_PRINTF))
-
-#OBJ
-OBJ_CONVERT_PRINTF = $(subst .c,.o, $(SRCS_CONVERT_PRINTF))
+SRCS_CONVERT_DIR_PRINTF= $(addprefix ft_printf/convert/, $(SRCS_CONVERT_PRINTF))
+SRCS+= $(SRCS_CONVERT_DIR_PRINTF)
 
 #####
 
@@ -70,36 +66,51 @@ OBJ_CONVERT_PRINTF = $(subst .c,.o, $(SRCS_CONVERT_PRINTF))
 SRCS_FLAGS_PRINTF = flags.c generic_flags.c min_field_width.c octal_flags.c \
 			 hexa_flags.c binary_flags.c binary_flags_ext.c
 
-SRCS_FLAGS_DIR_PRINTF= $(addprefix srcs/ft_printf/flags/, $(SRCS_FLAGS_PRINTF))
-
-#OBJ
-OBJ_FLAGS_PRINTF = $(subst .c,.o, $(SRCS_FLAGS_PRINTF))
+SRCS_FLAGS_DIR_PRINTF= $(addprefix ft_printf/flags/, $(SRCS_FLAGS_PRINTF))
+SRCS+= $(SRCS_FLAGS_DIR_PRINTF)
 
 ###########################
 
+OBJ=$(SRCS:.c=.o)
+SRCS_DIR = srcs/
+OBJ_DIR = obj/
+INCLUDE = -Iincludes/ -Isrcs/ft_dtoa/ -Isrcs/ft_ldtoa/
+OBJS_DIR = $(addprefix $(OBJ_DIR), $(OBJ))
 
-WFLAGS = -Wall -Wextra -Werror 
+CC= gcc
+CFLAGS = -Wall -Wextra -Werror 
 
 GCCRESET=\033[0m
 GCCBLUE=\033[1;36m
+GCCBBLUE=\033[1;91m
+GCCYELLOW=\033[1;33m
+GCCGREEN=\033[1;32m
+GCCRED=\033[1;31m
 
-all: $(NAME)
+all:
+	@mkdir -p $(OBJ_DIR)
+	@make $(NAME)
 
-$(NAME):
-	@gcc $(WFLAGS) -c $(SRCS_DIR) $(SRCS_DIR_PRINTF) $(SRCS_CONVERT_DIR_PRINTF) $(SRCS_FLAGS_DIR_PRINTF) $(INCLUDE)
-	@echo "Compilation des fichiers sources $(GCCBLUE)<libft>$(GCCRESET)..."
-	@ar rc $(NAME) $(OBJ) $(OBJ_PRINTF) $(OBJ_FLAGS_PRINTF) $(OBJ_CONVERT_PRINTF)
-	@echo "Creation de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."
+$(NAME): $(OBJS_DIR)
+	@ar rc $(NAME) $(OBJS_DIR)
+	@echo "$(GCCBLUE)$(basename $(NAME)): $(GCCRESET)Librairie compilé $(GCCGREEN)-- $(NAME)$(GCCRESET)"
 	@ranlib $(NAME)
-	@echo "Indexation de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."
+	@echo "$(GCCBLUE)$(basename $(NAME)): $(GCCRESET)Indexation $(GCCGREEN)-- $(NAME)$(GCCRESET)"
+	@echo "$(GCCBLUE)$(basename $(NAME)): $(GCCRESET)$(GCCGREEN)SUCCESS$(GCCRESET)"
+
+$(OBJ_DIR)%.o: $(SRCS_DIR)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@echo "$(GCCBLUE)$(basename $(NAME)): $(GCCRESET)Compilation $(GCCGREEN)-- $(basename $(notdir $<))$(GCCRESET)"
+
 
 clean:
-	@/bin/rm -rf $(OBJ) $(OBJ_PRINTF) $(OBJ_FLAGS_PRINTF) $(OBJ_CONVERT_PRINTF)
-	@echo "Suppression des fichiers objet $(GCCBLUE)<libft>$(GCCRESET)..."
+	@rm -Rf $(OBJ_DIR)
+	@echo "$(GCCBLUE)$(basename $(NAME)): $(GCCRESET)Suppression $(GCCRED)-- $(OBJ_DIR)$(GCCRESET)"
 
 fclean: clean
-	@rm -rf $(NAME)
-	@echo "Suppression de la librairie $(GCCBLUE)<libft>$(GCCRESET)..."
+	@rm -Rf $(NAME)
+	@echo "$(GCCBLUE)$(basename $(NAME)): $(GCCRESET)Suppression $(GCCRED)-- $(NAME)$(GCCRESET)"
 
 re: fclean all
 
