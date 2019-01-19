@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
+/*   By: vjovanov <vjovanov@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/02 18:11:46 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/11/21 23:24:44 by vjovanov         ###   ########.fr       */
+/*   Updated: 2019/01/19 17:23:54 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static int	print_result(t_data *data)
 	}
 	else
 		ft_putstr(data->value_format);
-	return (data->identifier == 'c' && data->value[0] == 0 ? i :
-		ft_strlen(data->value_format));
+	return (data->identifier == 'c' && data->value[0] == 0 ? i : 
+		(int)ft_strlen(data->value_format));
 }
 
 int			read_percent(const char *format, va_list ap, t_data *data, int *i)
