@@ -70,13 +70,20 @@ char		*fill_flags(char *s_fmt, va_list ap, int ret)
 {
 	int		star;
 	char	*res;
+	char	*tmp1;
+	char	*tmp2;
 
 	star = 0;
 	res = NULL;
 	if (s_fmt[ret - 1] == '*')
 	{
 		star = (int)va_arg(ap, int);
-		if ((res = ft_strjoin(ft_strsub(s_fmt, 0, 1), ft_itoa(star))) == NULL)
+		tmp1 = ft_strsub(s_fmt, 0, 1);
+		tmp2 = ft_itoa(star);
+		res = ft_strjoin(tmp1, tmp2);
+		ft_memdel((void**)&tmp1);
+		ft_memdel((void**)&tmp2);
+		if (res == NULL)
 			return (NULL);
 		return (res);
 	}
