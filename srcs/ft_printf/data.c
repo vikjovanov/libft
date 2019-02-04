@@ -6,11 +6,11 @@
 /*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 22:05:40 by bjovanov          #+#    #+#             */
-/*   Updated: 2018/11/21 22:56:01 by vjovanov         ###   ########.fr       */
+/*   Updated: 2019/01/11 10:50:27 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void			set_data(t_data *data)
 {

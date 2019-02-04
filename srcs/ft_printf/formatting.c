@@ -6,16 +6,22 @@
 /*   By: vjovanov <vjovanov@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 20:15:49 by vjovanov          #+#    #+#             */
-/*   Updated: 2018/12/11 20:15:50 by vjovanov         ###   ########.fr       */
+/*   Updated: 2019/01/11 10:58:01 by vjovanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int		del_tab(char *tmp)
 {
 	ft_strdel(&tmp);
 	return (1);
+}
+
+char	*del_tab_null(char *tmp)
+{
+	ft_strdel(&tmp);
+	return (NULL);
 }
 
 int		formatting(const char *format, t_data *data, va_list ap)
@@ -29,7 +35,7 @@ int		formatting(const char *format, t_data *data, va_list ap)
 	while (!is_identifier(format[i]) && format[i])
 		i++;
 	if ((sub = ft_strsub(format, 1, i)) == NULL ||
-		(data->s_fmt_orig = ft_strjoin("%", sub)) == NULL)
+		(data->s_fmt_orig = ft_strdup(sub)) == NULL)
 		return (!del_tab(sub));
 	if (format[i] != '\0' && (tmp = check_sub((const char*)sub)) != NULL)
 	{
