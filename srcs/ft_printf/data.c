@@ -75,32 +75,32 @@ static int		fill_data_extend(t_data *data, va_list ap, int i)
 ** i[3] = ret
 */
 
-static int		fill_data_flags(t_data *data, va_list ap, int *i, char **tmp)
+static int		fill_data_flags(t_data *d, va_list ap, int *i, char **tmp)
 {
-	if ((i[3] = is_flag((const char*)&(data->s_fmt_new[i[0]]))) > 0)
+	if ((i[3] = is_flag((const char*)&(d->s_fmt_new[i[0]]))) > 0)
 	{
-		if (is_acceptable_flag(data->s_fmt_new[
-			(int)ft_strlen(data->s_fmt_new) - 1], data->s_fmt_new[i[0]]))
+		if (is_acceptable_flag(d->s_fmt_new[
+			(int)ft_strlen(d->s_fmt_new) - 1], d->s_fmt_new[i[0]]))
 		{
-			if ((*tmp = fill_flags(&(data->s_fmt_new[i[0]]), ap, i[3])) == NULL)
+			if ((*tmp = fill_flags(&(d->s_fmt_new[i[0]]), ap, i[3])) == NULL)
 				return (0);
-			data->flags[i[1]++] = ft_strdup(*tmp);
+			d->flags[i[1]++] = ft_strdup(*tmp);
 		}
 	}
 	else if ((i[3] = is_conversion_flag(
-		(const char*)&(data->s_fmt_new[i[0]]))) > 0)
+		(const char*)&(d->s_fmt_new[i[0]]))) > 0)
 	{
 		if (is_acceptable_conv_flag(
-			data->s_fmt_new[(int)ft_strlen(data->s_fmt_new) - 1],
-			&(data->s_fmt_new[i[0]]), i[3]))
+			d->s_fmt_new[(int)ft_strlen(d->s_fmt_new) - 1],
+			&(d->s_fmt_new[i[0]]), i[3]))
 		{
-			if ((*tmp = fill_conv_flags(&(data->s_fmt_new[i[0]]), i[3])) == NULL)
+			if ((*tmp = fill_conv_flags(&(d->s_fmt_new[i[0]]), i[3])) == NULL)
 				return (0);
-			data->conversion_flags[i[2]++] = ft_strdup(*tmp);
+			d->conversion_flags[i[2]++] = ft_strdup(*tmp);
 		}
 	}
 	else
-		i[3] = fill_data_extend(data, ap, i[0]);
+		i[3] = fill_data_extend(d, ap, i[0]);
 	return (i[3]);
 }
 
