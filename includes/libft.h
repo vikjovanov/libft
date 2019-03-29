@@ -66,6 +66,7 @@ char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack, const char *needle,
 size_t len);
+char				*ft_implode(char **tab, char *glue);
 void				ft_strreplace(char *str, char needle, char replace);
 char				*ft_strremove(const char *str, int start, int len);
 char				*ft_strtolower(char *s);
