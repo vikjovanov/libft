@@ -68,6 +68,8 @@ char				*ft_strnstr(const char *haystack, const char *needle,
 size_t len);
 char				*ft_implode(char **tab, char *glue);
 void				ft_strreplace(char *str, char needle, char replace);
+char				*ft_streplace_first(char *str, char *to_replace,
+char *replacement);
 char				*ft_strremove(const char *str, int start, int len);
 char				*ft_strtolower(char *s);
 char				*ft_strtoupper(char *s);
