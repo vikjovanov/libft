@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
-
+#include <stdio.h>
 static int	buffer_read(const int fd, char **tab_fd)
 {
 	char	*tmp;
@@ -62,6 +62,8 @@ static int	cpy_in_line(const int fd, char **tab_fd, char **line)
 	ft_strdel(&tmp);
 	if (tab_fd[fd] == NULL)
 		return (-1);
+	if (ft_strequ(tab_fd[fd], ""))
+		ft_strdel(&(tab_fd[fd]));
 	return (1);
 }
 
