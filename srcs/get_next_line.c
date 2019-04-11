@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
-#include <stdio.h>
+
 static int	buffer_read(const int fd, char **tab_fd)
 {
 	char	*tmp;
